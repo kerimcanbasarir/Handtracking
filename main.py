@@ -89,6 +89,15 @@ def letter4(): #F - Righthand
             hand_landmarks.landmark[18].y > hand_landmarks.landmark[20].y:
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
+def letter5(): #D - RightHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'D'
+    if hand_landmarks.landmark[4 and 12 and 16 and 20].y > hand_landmarks.landmark[8].y and\
+            hand_landmarks.landmark[4 and 12 and 16 and 20].x > hand_landmarks.landmark[8].x and\
+            hand_landmarks.landmark[12 and 16 and 20].y >= hand_landmarks.landmark[4].y  and\
+            hand_landmarks.landmark[11 and 15 and 19].x <= hand_landmarks.landmark[12 and 16 and 20].x:
+        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
 
 
 def main():
@@ -101,6 +110,8 @@ def main():
         letter3()
     elif hand_landmarks == letter4():
         letter4()
+    elif hand_landmarks == letter5():
+        letter5()
 
 # For webcam input:
 cap = cv2.VideoCapture(0)
