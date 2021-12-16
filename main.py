@@ -54,7 +54,9 @@ def letter1(): #A - RightHand
             hand_landmarks.landmark[13].y < hand_landmarks.landmark[16].y and\
             hand_landmarks.landmark[4].y < hand_landmarks.landmark[6].y and\
             hand_landmarks.landmark[4].x > hand_landmarks.landmark[6].x and\
-            hand_landmarks.landmark[17].y < hand_landmarks.landmark[20].y :
+            hand_landmarks.landmark[17].y < hand_landmarks.landmark[20].y and\
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
+            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 
@@ -65,7 +67,9 @@ def letter2(): #B - RightHand
             hand_landmarks.landmark[10].y > hand_landmarks.landmark[12].y and\
             hand_landmarks.landmark[14].y > hand_landmarks.landmark[16].y and\
             hand_landmarks.landmark[18].y > hand_landmarks.landmark[20].y and\
-            hand_landmarks.landmark[4].x <= hand_landmarks.landmark[13].x:
+            hand_landmarks.landmark[4].x <= hand_landmarks.landmark[13].x and\
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
+            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 
@@ -76,7 +80,9 @@ def letter3(): #E - RightHand
             hand_landmarks.landmark[10].y < hand_landmarks.landmark[12].y and\
             hand_landmarks.landmark[14].y < hand_landmarks.landmark[16].y and\
             hand_landmarks.landmark[18].y < hand_landmarks.landmark[20].y and\
-            hand_landmarks.landmark[4].x <= hand_landmarks.landmark[13].x:
+            hand_landmarks.landmark[4].x <= hand_landmarks.landmark[13].x and\
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
+            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 def letter4(): #F - Righthand
@@ -86,7 +92,10 @@ def letter4(): #F - Righthand
             hand_landmarks.landmark[4].x >= hand_landmarks.landmark[8].x and\
             hand_landmarks.landmark[10].y > hand_landmarks.landmark[12].y and\
             hand_landmarks.landmark[14].y > hand_landmarks.landmark[16].y and\
-            hand_landmarks.landmark[18].y > hand_landmarks.landmark[20].y:
+            hand_landmarks.landmark[18].y > hand_landmarks.landmark[20].y and\
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
+            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
+
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 def letter5(): #D - RightHand
@@ -94,10 +103,11 @@ def letter5(): #D - RightHand
     text = 'D'
     if hand_landmarks.landmark[4 and 12 and 16 and 20].y > hand_landmarks.landmark[8].y and\
             hand_landmarks.landmark[4 and 12 and 16 and 20].x > hand_landmarks.landmark[8].x and\
-            hand_landmarks.landmark[12 and 16 and 20].y >= hand_landmarks.landmark[4].y  and\
-            hand_landmarks.landmark[11 and 15 and 19].x <= hand_landmarks.landmark[12 and 16 and 20].x:
+            hand_landmarks.landmark[12 and 16 and 20].y >= hand_landmarks.landmark[4].y and\
+            hand_landmarks.landmark[11 and 15 and 19].x <= hand_landmarks.landmark[12 and 16 and 20].x and\
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
+            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
-
 
 
 def main():
