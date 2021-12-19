@@ -55,10 +55,8 @@ def letter1(): #A - RightHand
             hand_landmarks.landmark[4].y < hand_landmarks.landmark[6].y and\
             hand_landmarks.landmark[4].x > hand_landmarks.landmark[6].x and\
             hand_landmarks.landmark[17].y < hand_landmarks.landmark[20].y and\
-            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
-            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y > hand_landmarks.landmark[17].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
-
 
 def letter2(): #B - RightHand
     font = cv2.FONT_HERSHEY_PLAIN
@@ -68,8 +66,7 @@ def letter2(): #B - RightHand
             hand_landmarks.landmark[14].y > hand_landmarks.landmark[16].y and\
             hand_landmarks.landmark[18].y > hand_landmarks.landmark[20].y and\
             hand_landmarks.landmark[4].x <= hand_landmarks.landmark[13].x and\
-            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
-            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y > hand_landmarks.landmark[17].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 
@@ -81,8 +78,7 @@ def letter3(): #E - RightHand
             hand_landmarks.landmark[14].y < hand_landmarks.landmark[16].y and\
             hand_landmarks.landmark[18].y < hand_landmarks.landmark[20].y and\
             hand_landmarks.landmark[4].x <= hand_landmarks.landmark[13].x and\
-            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
-            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[17].y < hand_landmarks.landmark[1].y < hand_landmarks.landmark[0].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 def letter4(): #F - Righthand
@@ -93,8 +89,7 @@ def letter4(): #F - Righthand
             hand_landmarks.landmark[10].y > hand_landmarks.landmark[12].y and\
             hand_landmarks.landmark[14].y > hand_landmarks.landmark[16].y and\
             hand_landmarks.landmark[18].y > hand_landmarks.landmark[20].y and\
-            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
-            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[17].y < hand_landmarks.landmark[1].y < hand_landmarks.landmark[0].y: #bilek
 
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
@@ -105,9 +100,34 @@ def letter5(): #D - RightHand
             hand_landmarks.landmark[4 and 12 and 16 and 20].x > hand_landmarks.landmark[8].x and\
             hand_landmarks.landmark[12 and 16 and 20].y >= hand_landmarks.landmark[4].y and\
             hand_landmarks.landmark[11 and 15 and 19].x <= hand_landmarks.landmark[12 and 16 and 20].x and\
-            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
-            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y: #bilek
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[17].y < hand_landmarks.landmark[1].y and hand_landmarks.landmark[0].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
+def letter6(): #I - RightHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'I'
+    if hand_landmarks.landmark[6].y < hand_landmarks.landmark[8].y and\
+            hand_landmarks.landmark[10].y < hand_landmarks.landmark[12].y and\
+            hand_landmarks.landmark[14].y < hand_landmarks.landmark[16].y and\
+            hand_landmarks.landmark[18].y > hand_landmarks.landmark[20].y and\
+            hand_landmarks.landmark[4].x <= hand_landmarks.landmark[11].x and\
+            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[17].y < hand_landmarks.landmark[1].y < hand_landmarks.landmark[0].y: #bilek
+        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
+def letter7(): #G - RightHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'G'
+    if hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
+            hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y and\
+            hand_landmarks.landmark[8].x > hand_landmarks.landmark[6].x and\
+            hand_landmarks.landmark[12].x < hand_landmarks.landmark[10].x and\
+            hand_landmarks.landmark[16].x < hand_landmarks.landmark[14].x and\
+            hand_landmarks.landmark[20].x < hand_landmarks.landmark[18].x and\
+            hand_landmarks.landmark[6].y > hand_landmarks.landmark[4].y:
+        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
+
+
 
 
 def main():
@@ -122,6 +142,10 @@ def main():
         letter4()
     elif hand_landmarks == letter5():
         letter5()
+    elif hand_landmarks == letter6():
+        letter6()
+    elif hand_landmarks == letter7():
+        letter7()
 
 # For webcam input:
 cap = cv2.VideoCapture(0)
