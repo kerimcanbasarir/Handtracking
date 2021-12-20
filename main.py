@@ -263,6 +263,28 @@ def letter18(): #C -RightHand
 
        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
+def letter19(): #P - RightHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'P'
+    if hand_landmarks.landmark[17].y < hand_landmarks.landmark[20].y and\
+         hand_landmarks.landmark[13].y < hand_landmarks.landmark[16].y and\
+         hand_landmarks.landmark[10].y > hand_landmarks.landmark[12].y and\
+        hand_landmarks.landmark[6].y > hand_landmarks.landmark[8].y and\
+        hand_landmarks.landmark[4].x <= hand_landmarks.landmark[6].x:
+
+         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
+def letter20(): # Q - RigtHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'Q'
+    if hand_landmarks.landmark[20].y > hand_landmarks.landmark[18].y and\
+        hand_landmarks.landmark[16].y > hand_landmarks.landmark[14].y and\
+        hand_landmarks.landmark[12].y >hand_landmarks.landmark[10].y and\
+        hand_landmarks.landmark[5].y > hand_landmarks.landmark[8].y and\
+        hand_landmarks.landmark[2].y > hand_landmarks.landmark[4].y:
+
+        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
 
 
 
@@ -308,7 +330,10 @@ def main():
         letter17()
     elif hand_landmarks == letter18():
         letter18()
-
+    elif hand_landmarks == letter19():
+        letter19()
+    elif hand_landmarks == letter20():
+        letter20()
 
 # For webcam input:
 cap = cv2.VideoCapture(0)
