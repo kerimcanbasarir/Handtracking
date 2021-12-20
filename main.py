@@ -166,6 +166,20 @@ def letter10():  #U Rigtland
         hand_landmarks.landmark[4].x <= hand_landmarks.landmark[11].x and\
         hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[17].y < hand_landmarks.landmark[1].y < hand_landmarks.landmark[0].y: #bilek
      cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+    
+    
+def letter11(): #L - RightHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'L'
+    if hand_landmarks.landmark[9].y < hand_landmarks.landmark[12].y and\
+         hand_landmarks.landmark[13].y < hand_landmarks.landmark[16].y and\
+         hand_landmarks.landmark[17].y < hand_landmarks.landmark[20].y and\
+         hand_landmarks.landmark[6].y > hand_landmarks.landmark[8].y and\
+         hand_landmarks.landmark[2].y > hand_landmarks.landmark[4].y and\
+        hand_landmarks.landmark[4].x > hand_landmarks.landmark[5].x and\
+         hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y > hand_landmarks.landmark[17].y: #bilek
+
+        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 
 
@@ -192,8 +206,10 @@ def main():
         letter8()
     elif hand_landmarks == letter9():
         letter9()
-    elif hand_landmarks == letter11():
+    elif hand_landmarks == letter10():
         letter10()
+    elif hand_landmarks == letter11():
+        letter11()
     
 
 # For webcam input:
