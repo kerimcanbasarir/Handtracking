@@ -103,18 +103,7 @@ def letter5(): #D - RightHand
             hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[17].y < hand_landmarks.landmark[1].y and hand_landmarks.landmark[0].y: #bilek
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
-def letter6(): #I - RightHand
-    font = cv2.FONT_HERSHEY_PLAIN
-    text = 'I'
-    if hand_landmarks.landmark[6].y < hand_landmarks.landmark[8].y and\
-            hand_landmarks.landmark[10].y < hand_landmarks.landmark[12].y and\
-            hand_landmarks.landmark[14].y < hand_landmarks.landmark[16].y and\
-            hand_landmarks.landmark[18].y > hand_landmarks.landmark[20].y and\
-            hand_landmarks.landmark[4].x <= hand_landmarks.landmark[11].x and\
-            hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[17].y < hand_landmarks.landmark[1].y < hand_landmarks.landmark[0].y: #bilek
-        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
-
-def letter7(): #G - RightHand
+def letter6(): #G - RightHand
     font = cv2.FONT_HERSHEY_PLAIN
     text = 'G'
     if hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and\
@@ -127,7 +116,7 @@ def letter7(): #G - RightHand
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 
-def letter8():#I Rightland
+def letter7():#I Rightland
     font = cv2.FONT_HERSHEY_PLAIN
     text = 'I'
     if hand_landmarks.landmark[8].y > hand_landmarks.landmark[6].y and\
@@ -139,7 +128,7 @@ def letter8():#I Rightland
 
         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
-def letter9(): #V Rigthland
+def letter8(): #V Rigthland
     font = cv2.FONT_HERSHEY_PLAIN
     text = 'V'
     if hand_landmarks.landmark[16].y > hand_landmarks.landmark[14].y and\
@@ -153,7 +142,7 @@ def letter9(): #V Rigthland
        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 
-def letter10(): #W Rigtland
+def letter9(): #W Rigtland
     font = cv2.FONT_HERSHEY_PLAIN
     text = 'W'
     if hand_landmarks.landmark [20].y > hand_landmarks.landmark[17].y and\
@@ -167,7 +156,7 @@ def letter10(): #W Rigtland
        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
 
-def letter11():  #U Rigtland
+def letter10():  #U Rigtland
     font = cv2.FONT_HERSHEY_PLAIN
     text = 'U'
     if hand_landmarks.landmark[20].y > hand_landmarks.landmark[18].y and\
@@ -205,8 +194,7 @@ def main():
         letter9()
     elif hand_landmarks == letter11():
         letter10()
-    elif hand_landmarks == letter11():
-        letter11()
+    
 
 # For webcam input:
 cap = cv2.VideoCapture(0)
