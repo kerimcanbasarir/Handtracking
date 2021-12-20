@@ -254,6 +254,37 @@ def letter17(): #T - RightHand
 
        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
 
+def letter18(): #C -RightHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'C'
+    if hand_landmarks.landmark[7 and 11 and 15 and 19].x <= hand_landmarks.landmark[8 and 12 and 16 and 20].x and\
+       hand_landmarks.landmark[4].x <= hand_landmarks.landmark[5].x and\
+       hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[0].y > hand_landmarks.landmark[1].y > hand_landmarks.landmark[17].y: #bilek
+
+       cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
+def letter19(): #P - RightHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'P'
+    if hand_landmarks.landmark[17].y < hand_landmarks.landmark[20].y and\
+         hand_landmarks.landmark[13].y < hand_landmarks.landmark[16].y and\
+         hand_landmarks.landmark[10].y > hand_landmarks.landmark[12].y and\
+        hand_landmarks.landmark[6].y > hand_landmarks.landmark[8].y and\
+        hand_landmarks.landmark[4].x <= hand_landmarks.landmark[6].x:
+
+         cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
+def letter20(): # Q - RigtHand
+    font = cv2.FONT_HERSHEY_PLAIN
+    text = 'Q'
+    if hand_landmarks.landmark[20].y > hand_landmarks.landmark[18].y and\
+        hand_landmarks.landmark[16].y > hand_landmarks.landmark[14].y and\
+        hand_landmarks.landmark[12].y >hand_landmarks.landmark[10].y and\
+        hand_landmarks.landmark[5].y > hand_landmarks.landmark[8].y and\
+        hand_landmarks.landmark[2].y > hand_landmarks.landmark[4].y:
+
+        cv2.putText(image, text, (10, 50), font, 4, (0, 0, 255), 3)
+
 
 
 
@@ -297,7 +328,12 @@ def main():
         letter16()
     elif hand_landmarks == letter17():
         letter17()
-
+    elif hand_landmarks == letter18():
+        letter18()
+    elif hand_landmarks == letter19():
+        letter19()
+    elif hand_landmarks == letter20():
+        letter20()
 
 # For webcam input:
 cap = cv2.VideoCapture(0)
