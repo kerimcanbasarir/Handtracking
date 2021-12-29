@@ -1,20 +1,19 @@
 import cv2
 import mediapipe as mp
-import pyttsx3
 import time
 from gtts import gTTS
 from playsound import playsound
 import os
 
-
-# def speak(text):
-#     lang = "tr"
-#     tts = gTTS(text=text, lang=lang)
-#     filename = "voice.mp3"
-#     tts.save(filename)
-#     playsound(filename)
-#     os.remove("voice.mp3")
-
+# text paremetresi ile alınan girdiyi voice.mp3 adında dosya oluşturup ardından tekrar siler.
+# voice.mp3 silinmediği taktirde aynı isme sahip dosya oluşturacağı için hata alabilir.
+def speak(text):
+    lang = "tr"
+    tts = gTTS(text=text, lang=lang, slow=False)
+    filename = os.path.dirname(__file__)+"\\voice.mp3" # voice.mp3 adında dosya oluşturur.
+    tts.save(filename) # oluşturulan dosyayı kaydeder.
+    playsound(filename) # file dosyasını açmadan python ile okumasını sağlar.
+    os.remove("voice.mp3") # voice.mp3 dosyasını siler
 
 # Başlangıç bilgilendirme Döngüsü.
 while True:
@@ -39,7 +38,6 @@ letter_lock = False # Harf kilidi. Harf algılandığı zaman True döner.
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
-engine = pyttsx3.init()
 # For static images:
 IMAGE_FILES = []
 with mp_hands.Hands(
@@ -213,7 +211,7 @@ with mp_hands.Hands(
                     letter_lock = True
                     if letter_lock == True:
                         time.sleep(0.5)
-                        letter_list.append("I")
+                        letter_list.append("i")
                         print(letter_list)
                         letter_lock = False
                         break
@@ -237,7 +235,7 @@ with mp_hands.Hands(
                         letter_lock = False
                         break
                     break
-                # U Rigtland
+                # U Righthand
                 elif hand_landmarks.landmark[20].y > hand_landmarks.landmark[18].y and \
                         hand_landmarks.landmark[16].y > hand_landmarks.landmark[14].y and \
                         hand_landmarks.landmark[10].y > hand_landmarks.landmark[12].y and \
@@ -257,7 +255,7 @@ with mp_hands.Hands(
                         letter_lock = False
                         break
                     break
-                # W Rigtland+
+                # W Rigtland
                 elif hand_landmarks.landmark[20].y > hand_landmarks.landmark[18].y and \
                         hand_landmarks.landmark[14].y > hand_landmarks.landmark[16].y and \
                         hand_landmarks.landmark[10].y > hand_landmarks.landmark[12].y and \
@@ -294,7 +292,7 @@ with mp_hands.Hands(
                         letter_lock = False
                         break
                     break
-                # V Rigthland
+                # V RightHand
                 elif hand_landmarks.landmark[20].y > hand_landmarks.landmark[18].y and \
                         hand_landmarks.landmark[16].y > hand_landmarks.landmark[14].y and \
                         hand_landmarks.landmark[10].y > hand_landmarks.landmark[12].y and \
@@ -388,7 +386,7 @@ with mp_hands.Hands(
                         letter_lock = False
                         break
                     break
-                # N RigtHand
+                # N RightHand
                 elif hand_landmarks.landmark[20].y > hand_landmarks.landmark[17].y and \
                         hand_landmarks.landmark[8].y > hand_landmarks.landmark[5].y and \
                         hand_landmarks.landmark[16].y > hand_landmarks.landmark[13].y and \
@@ -466,7 +464,7 @@ with mp_hands.Hands(
                         letter_lock = False
                         break
                     break
-                # O -RigtHand
+                # O - RightHand
                 elif hand_landmarks.landmark[5].x < hand_landmarks.landmark[17].x and \
                         hand_landmarks.landmark[5].y > hand_landmarks.landmark[8].y > hand_landmarks.landmark[6].y and \
                         hand_landmarks.landmark[9].y > hand_landmarks.landmark[12].y > hand_landmarks.landmark[10].y and \
@@ -564,7 +562,7 @@ with mp_hands.Hands(
                         letter_lock = False
                         break
                     break
-                # Q - RigtHand
+                # Q - RightHand
                 elif hand_landmarks.landmark[0].y < hand_landmarks.landmark[8 and 12 and 16 and 20].y and \
                         hand_landmarks.landmark[8].y > hand_landmarks.landmark[6].y and \
                         hand_landmarks.landmark[4].y > hand_landmarks.landmark[2].y and \
@@ -589,7 +587,7 @@ with mp_hands.Hands(
                         hand_landmarks.landmark[5].x < hand_landmarks.landmark[4].x and \
                         hand_landmarks.landmark[0].x < hand_landmarks.landmark[1].x and hand_landmarks.landmark[0].y > \
                         hand_landmarks.landmark[1].y > hand_landmarks.landmark[17].y:  # bilek
-                    cv2.putText(image, " '' ", (10, 50), cv2.FONT_HERSHEY_PLAIN, 4, (0, 0, 255), 3)
+                    cv2.putText(image, " ", (10, 50), cv2.FONT_HERSHEY_PLAIN, 4, (0, 0, 255), 3)
                     # Koşul sağlandığı zaman kilit True döner. Listeye boşluk tanımlar ve tekrar False'a dönerek koşulu kırar.
                     if letter_lock == True:
                         time.sleep(0.5)
@@ -613,11 +611,9 @@ with mp_hands.Hands(
                         time.sleep(0.5)
                         connective = ''.join(letter_list)
                         print(connective)
-                        engine.say(connective)
-                        engine.runAndWait()
-                        # speak(connective)
+                        speak(connective)
                         break
-
+                    break
 
                 # deletion of letters
                 elif hand_landmarks.landmark[6].y > hand_landmarks.landmark[8].y and \
@@ -631,10 +627,13 @@ with mp_hands.Hands(
                     # Koşul sağlandığı zaman kilit True döner. Listeden son harfi siler ve tekrar False dönderip koşulu kırar.
                     letter_lock = True
                     if letter_lock == True:
-                        time.sleep(0.5)
-                        letter_list.pop()
-                        print(letter_list)
-                        letter_lock = False
+                        try:
+                            time.sleep(0.5)
+                            letter_list.pop()
+                            print(letter_list)
+                            letter_lock = False
+                        except IndexError:
+                            print("Liste boş.Listede silinecek harf bulunamadı.")
                         break
                     break
                 mp_drawing.draw_landmarks(
